@@ -7,6 +7,17 @@ void input (int** mtx, int r, int c);
 int** convert (const int* t, size_t n, const size_t* lns, size_t rows);
 
 int main() {
+  int test = 0;
+  std::cin >> test;
+  if (test == 1) {
+    size_t n = 12;
+    size_t rows  = 4;
+    size_t lns[rows] {4, 2, 5, 1};
+    int t[n] {5, 5, 5, 5, 6, 6, 7, 7, 7, 7, 7, 8};
+    convert(t, n, lns, rows);
+    return 0;
+  }
+
   int rows = 0;
   int cols = 0;
   std::cin >> rows >> cols;
