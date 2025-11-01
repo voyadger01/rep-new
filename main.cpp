@@ -33,7 +33,7 @@ void input (int** mtx, int r, int c) {
   }
 }
 
-void output (int** mtx, int r, int c) {
+void output (const int* const* mtx, int r, int c) {
   for (size_t i = 0; i < r; ++i){
     for (size_t j = 0; j < c; ++j){
       std::cout << mtx[i][j] << '\t';
