@@ -1,12 +1,8 @@
 #include <iostream>
 
-void output(const int** mtx);
-
+void output(const int* const * mtx);
 void rm(int** mtx);
-
-int** make(int rows, int cols) {
-
-}
+int** make(int rows, int cols);
 
 int main() {
   int rows = 0;
