@@ -11,10 +11,13 @@ int main() {
   std::cin >> test;
   if (test == 1) {
     size_t n = 12;
+    size_t i = 5;
     size_t rows  = 4;
     size_t lns[rows] {4, 2, 5, 1};
     int t[n] {5, 5, 5, 5, 6, 6, 7, 7, 7, 7, 7, 8};
-    convert(t, n, lns, rows);
+    int** mtx = convert(t, n, lns, rows);
+    output(mtx, rows, i);
+    rm(mtx, rows);
     return 0;
   }
 
@@ -74,4 +77,25 @@ void output (const int* const* mtx, int r, int c) {
     }
     std::cout << '\n';
   }
+}
+
+void output (const int* const* mtx, size_t r, size_t c) {
+  for (size_t i = 0; i < r; ++i){
+    for (size_t j = 0; j < c; ++j){
+      std::cout << mtx[i][j] << '\t';
+    }
+    std::cout << '\n';
+  }
+}
+
+int** convert(const int* t, size_t n, const size_t* lns, size_t rows) {
+    int** mtx = new int*[rows];
+    size_t idx = 0;
+    for (size_t i = 0; i < rows; ++i) {
+        mtx[i] = new int[lns[i]];
+        for (size_t j = 0; j < lns[i]; ++j) {
+            mtx[i][j] = t[idx++];
+        }
+    }
+    return mtx;
 }
