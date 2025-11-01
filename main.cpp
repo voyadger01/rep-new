@@ -5,15 +5,16 @@ void rm(int** mtx, int r);
 int** make(int r, int c);
 void input (int** mtx, int r, int c);
 int** convert (const int* t, size_t n, const size_t* lns, size_t rows);
+size_t numCols(size_t* lns, size_t rows);
 
 int main() {
   int test = 0;
   std::cin >> test;
   if (test == 1) {
     size_t n = 12;
-    size_t i = 5;
     size_t rows  = 4;
     size_t lns[rows] {4, 2, 5, 1};
+    size_t i = numCols(lns, rows);
     int t[n] {5, 5, 5, 5, 6, 6, 7, 7, 7, 7, 7, 8};
     int** mtx = convert(t, n, lns, rows);
     output(mtx, rows, i);
@@ -98,4 +99,14 @@ int** convert(const int* t, size_t n, const size_t* lns, size_t rows) {
         }
     }
     return mtx;
+}
+
+size_t numCols(size_t* lns, size_t rows) {
+  size_t cols = 0;
+  for (size_t i = 0; i < rows - 1; ++i) {
+    if (lns[i+1] > lns[i]) {
+      cols = lns[i+1];
+    }
+  }
+  return cols;
 }
